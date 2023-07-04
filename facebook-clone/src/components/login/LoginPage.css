@@ -1,0 +1,21 @@
+img {
+    height: 106px;
+    margin: -28px;
+}
+
+.main-box {
+    background: #f0f2f5;
+}
+
+.custom-list {
+    padding: 0;
+}
+
+.custom-list li {
+    list-style-type: none;
+}
+
+.custom-list a {
+    text-decoration: none;
+    color: black
+}
