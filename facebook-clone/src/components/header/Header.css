@@ -1,0 +1,33 @@
+#header-logo {
+    width: 40px;
+    height: auto;
+}
+
+.bg-input-group,
+.header-group-btn {
+    background: #f0f2f5;
+}
+
+.bg-input-group {
+    outline: none;
+}
+
+.header-group-btn {
+    width: 40px;
+    height: 40px;
+}
+
+.header-group-btn img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.fb-header {
+    height: 60px;
+
+}
+
+.header-group-route {
+    width: 112px;
+}

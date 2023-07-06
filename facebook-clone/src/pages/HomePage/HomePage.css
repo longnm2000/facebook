@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.home-icon-box {
+    width: 28px;
+    height: 28px;
+}
+
+.home-icon-box i {
+    font-size: 21px;
+    color: #209cff
+}
+
+.home-icon-box img,
+.home-icon-box-2 img {
+    width: 100%;
+    height: 100%;
+}
+
+.home-icon-box-2 {
+    width: 40px;
+    height: 40px;
+}
+
+.home-main {
+    background-color: #f0f2f5;
+    margin-top: 60px;
+    max-width: 2500px;
+}
+
+.home-group-icon {
+    height: 44px;
+
+}
+
+.home-group-icon:hover {
+    background-color: #e0e2e4;
+    cursor: pointer;
+}
+
+.home-left-nav {
+    padding-bottom: 60px;
+}

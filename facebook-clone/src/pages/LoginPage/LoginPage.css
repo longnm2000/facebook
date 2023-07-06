@@ -1,4 +1,4 @@
-img {
+.logo-img {
     height: 106px;
     margin: -28px;
 }
@@ -18,4 +18,15 @@ img {
 .custom-list a {
     text-decoration: none;
     color: black
+}
+
+.note-text {
+    font-size: 14px;
+    color: #606064
+}
+
+.radio-gender:hover,
+.radio-gender label:hover,
+.radio-gender input:hover {
+    cursor: pointer;
 }

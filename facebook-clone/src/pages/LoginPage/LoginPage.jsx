@@ -6,20 +6,22 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
-import InputGroup from "react-bootstrap/InputGroup";
+
 import { useState } from "react";
+import Register from "../../components/register/Register";
 
 function LoginPage() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   return (
     <div>
       <div className="main-box">
         <Container className="py-4">
           <Row className="align-items-center" style={{ minHeight: "500px" }}>
             <Col lg={7}>
-              <img src="/fb_logo_1.svg" alt="" />
+              <img src="/fb_logo_1.svg" alt="" className="logo-img" />
               <h2 className="mt-3">
                 Facebook giúp bạn kết nối và chia sẻ với mọi người trong cuộc
                 sống của bạn.
@@ -31,7 +33,7 @@ function LoginPage() {
                   <Form.Control
                     className="py-2"
                     type="email"
-                    placeholder="Email hoặc số điện thoại"
+                    placeholder="Email"
                   />
                 </Form.Group>
 
@@ -268,7 +270,8 @@ function LoginPage() {
                 href="https://www.facebook.com/help/568137493302217"
                 title="Tìm hiểu về Lựa chọn quảng cáo."
               >
-                Lựa chọn quảng cáo<i class="img sp_EP9wX8qDDvu sx_6bdd81"></i>
+                Lựa chọn quảng cáo
+                <i className="img sp_EP9wX8qDDvu sx_6bdd81"></i>
               </a>
             </li>
             <li>
@@ -328,44 +331,8 @@ function LoginPage() {
             <Modal.Title>Đăng ký</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
-              <div className="d-flex gap-2">
-                <Form.Group className="mb-3">
-                  <Form.Control
-                    type="text"
-                    placeholder="Họ"
-                    className="bg-light"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Control
-                    type="text"
-                    placeholder="Tên"
-                    className="bg-light"
-                  />
-                </Form.Group>
-              </div>
-              <Form.Group className="mb-3">
-                <Form.Control
-                  type="text"
-                  placeholder="Số di động hoặc email"
-                  className="bg-light"
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Control
-                  type="password"
-                  placeholder="Mật khẩu"
-                  className="bg-light"
-                />
-              </Form.Group>
-            </Form>
+            <Register />
           </Modal.Body>
-          <Modal.Footer className="d-flex justify-content-center">
-            <Button variant="primary" onClick={handleClose}>
-              Đăng ký
-            </Button>
-          </Modal.Footer>
         </Modal>
       </div>
     </div>
