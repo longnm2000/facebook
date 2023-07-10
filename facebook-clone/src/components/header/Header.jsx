@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { Col, Container, Row } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
@@ -12,17 +13,19 @@ function Header() {
         <Row className="fb-header">
           <Col className="d-flex align-items-center">
             <div className="d-flex align-items-center">
-              <img
-                src="/fb_logo_2.png"
-                alt=""
-                id="header-logo"
-                className="me-2"
-              />
+              <NavLink to={"/"}>
+                <img
+                  src="/fb_logo_2.png"
+                  alt=""
+                  id="header-logo"
+                  className="me-2"
+                />
+              </NavLink>
               <label
                 htmlFor="search-info"
                 className=" px-3 py-2 rounded-5 bg-input-group"
               >
-                <i class="fa-solid fa-magnifying-glass me-2 "></i>
+                <i className="fa-solid fa-magnifying-glass me-2 "></i>
                 <input
                   type="text"
                   name="search-info"
@@ -36,20 +39,27 @@ function Header() {
           <Col className="d-flex justify-content-center">
             <div className="d-flex h-100">
               <div className="header-group-route d-flex align-items-center justify-content-center">
-                <svg
-                  viewBox="0 0 28 28"
-                  class="x1lliihq x1k90msu x2h7rmj x1qfuztq x5e5rjt"
-                  fill="currentColor"
-                  height="28"
-                  width="28"
+                <NavLink
+                  to={"/"}
+                  className={
+                    "w-100 h-100 d-flex justify-content-center align-items-center header-navlink"
+                  }
                 >
-                  <path d="M25.825 12.29C25.824 12.289 25.823 12.288 25.821 12.286L15.027 2.937C14.752 2.675 14.392 2.527 13.989 2.521 13.608 2.527 13.248 2.675 13.001 2.912L2.175 12.29C1.756 12.658 1.629 13.245 1.868 13.759 2.079 14.215 2.567 14.479 3.069 14.479L5 14.479 5 23.729C5 24.695 5.784 25.479 6.75 25.479L11 25.479C11.552 25.479 12 25.031 12 24.479L12 18.309C12 18.126 12.148 17.979 12.33 17.979L15.67 17.979C15.852 17.979 16 18.126 16 18.309L16 24.479C16 25.031 16.448 25.479 17 25.479L21.25 25.479C22.217 25.479 23 24.695 23 23.729L23 14.479 24.931 14.479C25.433 14.479 25.921 14.215 26.132 13.759 26.371 13.245 26.244 12.658 25.825 12.29"></path>
-                </svg>
+                  <svg
+                    viewBox="0 0 28 28"
+                    className="x1lliihq x1k90msu x2h7rmj x1qfuztq x5e5rjt"
+                    fill="currentColor"
+                    height="28"
+                    width="28"
+                  >
+                    <path d="M25.825 12.29C25.824 12.289 25.823 12.288 25.821 12.286L15.027 2.937C14.752 2.675 14.392 2.527 13.989 2.521 13.608 2.527 13.248 2.675 13.001 2.912L2.175 12.29C1.756 12.658 1.629 13.245 1.868 13.759 2.079 14.215 2.567 14.479 3.069 14.479L5 14.479 5 23.729C5 24.695 5.784 25.479 6.75 25.479L11 25.479C11.552 25.479 12 25.031 12 24.479L12 18.309C12 18.126 12.148 17.979 12.33 17.979L15.67 17.979C15.852 17.979 16 18.126 16 18.309L16 24.479C16 25.031 16.448 25.479 17 25.479L21.25 25.479C22.217 25.479 23 24.695 23 23.729L23 14.479 24.931 14.479C25.433 14.479 25.921 14.215 26.132 13.759 26.371 13.245 26.244 12.658 25.825 12.29"></path>
+                  </svg>
+                </NavLink>
               </div>
               <div className="header-group-route d-flex align-items-center justify-content-center">
                 <svg
                   viewBox="0 0 28 28"
-                  class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6"
+                  className="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6"
                   fill="currentColor"
                   height="28"
                   width="28"
@@ -60,7 +70,7 @@ function Header() {
               <div className="header-group-route d-flex align-items-center justify-content-center">
                 <svg
                   viewBox="0 0 28 28"
-                  class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6"
+                  className="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6"
                   fill="currentColor"
                   height="28"
                   width="28"
@@ -71,7 +81,7 @@ function Header() {
               <div className="header-group-route d-flex align-items-center justify-content-center">
                 <svg
                   viewBox="0 0 28 28"
-                  class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6"
+                  className="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6"
                   fill="currentColor"
                   height="28"
                   width="28"
@@ -85,22 +95,22 @@ function Header() {
                   viewBox="0 0 24 24"
                   width="28px"
                   height="28px"
-                  class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6 x1fgtraw xgd8bvy"
+                  className="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6 x1fgtraw xgd8bvy"
                 >
-                  <g fill-rule="evenodd" transform="translate(-444 -204)">
+                  <g fillRule="evenodd" transform="translate(-444 -204)">
                     <g>
                       <path
-                        fill-rule="nonzero"
+                        fillRule="nonzero"
                         d="M98.5 5.75v4a.75.75 0 1 0 1.5 0v-4a.75.75 0 1 0-1.5 0z"
                         transform="translate(351.5 208.5)"
                       ></path>
                       <path
-                        fill-rule="nonzero"
+                        fillRule="nonzero"
                         d="M97.25 8.5h4a.75.75 0 1 0 0-1.5h-4a.75.75 0 1 0 0 1.5z"
                         transform="translate(351.5 208.5)"
                       ></path>
                       <path
-                        fill-rule="nonzero"
+                        fillRule="nonzero"
                         d="M109.5 14.5h-10a7 7 0 0 1 0-14h10a7 7 0 0 1 0 14zm0-1.5a5.5 5.5 0 0 0 0-11h-10a5.5 5.5 0 0 0 0 11h10z"
                         transform="translate(351.5 208.5)"
                       ></path>
@@ -138,7 +148,7 @@ function Header() {
                 <svg
                   viewBox="0 0 28 28"
                   alt=""
-                  class="x1lliihq x1k90msu x2h7rmj x1qfuztq x198g3q0"
+                  className="x1lliihq x1k90msu x2h7rmj x1qfuztq x198g3q0"
                   fill="currentColor"
                   height="20"
                   width="20"
@@ -150,7 +160,7 @@ function Header() {
                 <svg
                   viewBox="0 0 28 28"
                   alt=""
-                  class="x1lliihq x1k90msu x2h7rmj x1qfuztq x198g3q0"
+                  className="x1lliihq x1k90msu x2h7rmj x1qfuztq x198g3q0"
                   fill="currentColor"
                   height="20"
                   width="20"

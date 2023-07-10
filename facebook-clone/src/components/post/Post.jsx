@@ -1,7 +1,8 @@
 import React from "react";
 import "./Post.css";
 
-export default function Post() {
+export default function Post(props) {
+  console.log(props);
   return (
     <div className="bg-white p-3 mt-3  rounded ">
       <div className="d-flex align-items-center justify-content-between ">
@@ -14,14 +15,14 @@ export default function Post() {
             />
           </div>
           <div>
-            <h5>Đường viền tròn</h5>
+            <h5></h5>
             <div>
               <span>14 giờ </span>
-              <i class="fa-solid fa-earth-americas"></i>
+              <i className="fa-solid fa-earth-americas"></i>
             </div>
           </div>
         </div>
-        <i class="fa-solid fa-ellipsis"></i>
+        <i className="fa-solid fa-ellipsis"></i>
       </div>
       <div className="mt-2">
         <p>Quá khứ đen của đôi tình nhân 🫠</p>
@@ -42,18 +43,18 @@ export default function Post() {
         </div>
         <div>
           <span>50K </span>
-          <i class="fa-regular fa-message"></i>
+          <i className="fa-regular fa-message"></i>
         </div>
       </div>
       <div className="d-flex justify-content-between border-top mt-3 pt-2">
         <button className="btn btn-light flex-grow-1">
-          <i class="fa-regular fa-thumbs-up"></i> Thích
+          <i className="fa-regular fa-thumbs-up"></i> Thích
         </button>
         <button className="btn btn-light flex-grow-1">
-          <i class="fa-regular fa-message"></i> Bình luận
+          <i className="fa-regular fa-message"></i> Bình luận
         </button>
         <button className="btn btn-light flex-grow-1">
-          <i class="fa-solid fa-share"></i> Chia sẻ
+          <i className="fa-solid fa-share"></i> Chia sẻ
         </button>
       </div>
     </div>

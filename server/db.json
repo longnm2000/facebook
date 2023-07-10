@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "email": "longnguyenmanh20052000@gmail.com",
+      "password": "$2a$10$a7um.IypHZQLEORX9Zseteb0vTPAMFNtCrOzdpUHj1foYJ3WuJBo6",
+      "firstName": "dawdaw",
+      "lastName": "dwadwa",
+      "confirmPassword": "Qwer1234!",
+      "date": "2",
+      "month": "2",
+      "year": "2021",
+      "gender": "0",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
+      "bgImage": "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
+      "id": 123
+    },
+    {
+      "email": "longnguyenmanh205@gmail.com",
+      "password": "$2a$10$T16gBJNnh4BaEn8ImzQV7.Dq2gJB1GT3oHTO7NbYhKig4JXOg.LA.",
+      "firstName": "dawdaw",
+      "lastName": "dawdwa",
+      "date": "17",
+      "month": "3",
+      "year": "2009",
+      "gender": "0",
+      "confirmPassword": "Qwer1234!",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
+      "bgImage": "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
+      "friends": [],
+      "id": 124
+    },
+    {
+      "email": "phanlong17042005@gmail.com",
+      "password": "$2a$10$HyAbmGGo.FAeYw.dmI2sMOUG5koQAv99SukUXKmryxtE.VSi.zT2O",
+      "firstName": "ccasc",
+      "lastName": "dqwqd",
+      "date": "15",
+      "month": "2",
+      "year": "2016",
+      "gender": "0",
+      "confirmPassword": "Qwer1234!",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
+      "bgImage": "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
+      "friends": [],
+      "id": 125
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "userId": 125,
+      "rule": 2,
+      "content": "dawdwadawdawdwa",
+      "image": "https://antimatter.vn/wp-content/uploads/2022/10/hinh-anh-gai-xinh-de-thuong.jpg",
+      "like": [],
+      "comment": []
+    }
+  ]
+}

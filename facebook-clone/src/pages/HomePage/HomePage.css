@@ -44,3 +44,8 @@
 .home-left-nav {
     padding-bottom: 60px;
 }
+
+.route-navlink {
+    text-decoration: none;
+    color: black;
+}

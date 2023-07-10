@@ -6,14 +6,59 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 import { useState } from "react";
 import Register from "../../components/register/Register";
 
 function LoginPage() {
+  const navigate = useNavigate();
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Validate input
+    if (!email || !password) {
+      toast.error("Vui lòng nhập đầy đủ thông tin");
+      return;
+    }
+
+    axios
+      .post("http://localhost:8000/login", {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify(res.data.accessToken)
+          );
+
+          navigate("/");
+          toast.success("Đăng nhập thành công");
+        }
+      })
+
+      .catch((err) => {
+        if (err.response && err.response.status === 404) {
+          toast.error("Đăng nhập thất bại");
+        } else {
+          toast.error("Đã xảy ra lỗi");
+        }
+      });
+  };
 
   return (
     <div>
@@ -28,12 +73,17 @@ function LoginPage() {
               </h2>
             </Col>
             <Col lg={5}>
-              <Form className="py-5 bg-white p-3 rounded-3">
+              <Form
+                onSubmit={handleLogin}
+                className="py-5 bg-white p-3 rounded-3"
+              >
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Control
                     className="py-2"
                     type="email"
                     placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </Form.Group>
 
@@ -42,13 +92,15 @@ function LoginPage() {
                     className="py-2"
                     type="password"
                     placeholder="Mật khẩu"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </Form.Group>
 
                 <Button variant="primary" type="submit" className="w-100 py-2">
                   Đăng nhập
                 </Button>
-                <a href="">Quên mật khẩu</a>
+                <a href="www.google.com">Quên mật khẩu</a>
                 <hr />
                 <div className="d-flex justify-content-center">
                   <Button
@@ -137,17 +189,12 @@ function LoginPage() {
               <a
                 href="https://pay.facebook.com/"
                 title="Tìm hiểu thêm về Meta Pay"
-                target="_blank"
               >
                 Meta Pay
               </a>
             </li>
             <li>
-              <a
-                href="https://www.meta.com/"
-                title="Thanh toán qua Meta"
-                target="_blank"
-              >
+              <a href="https://www.meta.com/" title="Thanh toán qua Meta">
                 Cửa hàng trên Meta
               </a>
             </li>
@@ -155,7 +202,6 @@ function LoginPage() {
               <a
                 href="https://www.meta.com/quest/"
                 title="Tìm hiểu thêm về Meta Quest"
-                target="_blank"
               >
                 Meta Quest
               </a>
@@ -219,7 +265,6 @@ function LoginPage() {
             <li>
               <a
                 href="https://about.meta.com/"
-                accesskey="8"
                 title="Đọc blog của chúng tôi, khám phá trung tâm tài nguyên và tìm cơ hội việc làm."
               >
                 Giới thiệu
@@ -265,7 +310,7 @@ function LoginPage() {
             </li>
             <li>
               <a
-                class="_41ug"
+                className="_41ug"
                 data-nocookies="1"
                 href="https://www.facebook.com/help/568137493302217"
                 title="Tìm hiểu về Lựa chọn quảng cáo."
@@ -278,7 +323,6 @@ function LoginPage() {
               <a
                 data-nocookies="1"
                 href="/policies?ref=pf"
-                accesskey="9"
                 title="Xem lại điều khoản và chính sách của chúng tôi."
               >
                 Điều khoản
@@ -287,7 +331,6 @@ function LoginPage() {
             <li>
               <a
                 href="/help/?ref=pf"
-                accesskey="0"
                 title="Truy cập Trung tâm trợ giúp của chúng tôi."
               >
                 Trợ giúp
@@ -303,8 +346,7 @@ function LoginPage() {
             </li>
             <li>
               <a
-                accesskey="6"
-                class="accessible_elem"
+                className="accessible_elem"
                 href="/settings"
                 title="Xem và chỉnh sửa cài đặt Facebook."
               >
@@ -313,8 +355,7 @@ function LoginPage() {
             </li>
             <li>
               <a
-                accesskey="7"
-                class="accessible_elem"
+                className="accessible_elem"
                 href="/allactivity?privacy_source=activity_log_top_menu"
                 title="Xem nhật ký hoạt động"
               >
