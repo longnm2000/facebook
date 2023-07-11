@@ -3,13 +3,21 @@
     height: auto;
 }
 
+.header-main {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 .bg-input-group,
 .header-group-btn {
     background: #f0f2f5;
 }
 
 .bg-input-group {
-    outline: none;
+    /* outline: none; */
+    padding: 14px;
 }
 
 .header-group-btn {
@@ -34,4 +42,23 @@
 
 .header-navlink.active {
     border-bottom: blue solid 4px;
+}
+
+@media (max-width: 950px) {
+    .header-btn-center {
+        display: none;
+    }
+}
+
+.custom-toggle::after {
+    display: none !important;
+}
+
+.header-route-navlink {
+    text-decoration: none;
+    color: black;
+}
+
+.header-route-navlink:hover {
+    background-color: rgb(197, 194, 194);
 }

@@ -24,7 +24,6 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -46,8 +45,8 @@ function LoginPage() {
             JSON.stringify(res.data.accessToken)
           );
 
-          navigate("/");
           toast.success("Đăng nhập thành công");
+          navigate("/");
         }
       })
 

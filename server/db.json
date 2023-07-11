@@ -12,6 +12,7 @@
       "gender": "0",
       "avatar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
       "bgImage": "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
+      "friends": [],
       "id": 123
     },
     {
@@ -39,8 +40,8 @@
       "year": "2016",
       "gender": "0",
       "confirmPassword": "Qwer1234!",
-      "avatar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
-      "bgImage": "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
+      "avatar": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2Fdownload.jpeg?alt=media&token=f666ab92-0422-4570-94ac-aa2ff9ae1c4c",
+      "bgImage": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2FAnh-gai-xinh-Viet-Nam.jpg?alt=media&token=80d994f9-86da-4140-a167-86afddc7b08a",
       "friends": [],
       "id": 125
     }
@@ -52,8 +53,33 @@
       "rule": 2,
       "content": "dawdwadawdawdwa",
       "image": "https://antimatter.vn/wp-content/uploads/2022/10/hinh-anh-gai-xinh-de-thuong.jpg",
-      "like": [],
-      "comment": []
+      "like": [
+        124,
+        125
+      ],
+      "comments": []
+    },
+    {
+      "id": 3,
+      "userId": 124,
+      "rule": 2,
+      "content": "manh",
+      "image": "https://antimatter.vn/wp-content/uploads/2022/10/hinh-anh-gai-xinh-de-thuong.jpg",
+      "like": [
+        123,
+        124,
+        125
+      ],
+      "comments": [
+        {
+          "userId": 125,
+          "comment": "dwadwdwadaw"
+        },
+        {
+          "userId": 125,
+          "comment": "dwadwadawdwadw"
+        }
+      ]
     }
   ]
 }

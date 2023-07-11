@@ -1,3 +1,22 @@
 .profile-main {
     background: #f0f2f5;
 }
+
+.profile-bg-box {
+
+    z-index: 0;
+}
+
+.profile-btn-edit-bg {
+    bottom: 10px;
+    right: 10px
+}
+
+.profile-btn-edit-avatar {
+    bottom: 0;
+    right: 0;
+}
+
+.profile-btn-edit-avatar i {
+    padding: 5px 0;
+}

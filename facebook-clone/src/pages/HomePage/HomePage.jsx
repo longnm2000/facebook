@@ -6,14 +6,20 @@ import Post from "../../components/post/Post";
 import { NavLink } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 function HomePage() {
   const decodedToken = jwt_decode(localStorage.getItem("currentUser"));
-  const [data, setData] = useState([]);
+  const [users, setUsers] = useState(null);
+  const [posts, setPosts] = useState(null);
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/users");
-      setData(response.data);
+      const [responseUser, responsePosts] = await Promise.all([
+        axios.get(`http://localhost:8000/users/`),
+        axios.get(`http://localhost:8000/posts?_sort=id&_order=desc`),
+      ]);
+      setUsers(responseUser.data);
+      setPosts(responsePosts.data);
     } catch (error) {
       console.log(error);
     }
@@ -24,14 +30,17 @@ function HomePage() {
   }, []);
 
   const findUser = useMemo(() => {
-    if (data.length > 0) {
-      return data.find((e) => e.id === +decodedToken.sub);
+    if (users?.length > 0) {
+      return users.find((e) => e.id === +decodedToken.sub);
     }
     return null;
-  }, [data, decodedToken]);
+  }, [users, decodedToken]);
 
   return (
     <div>
+      <Helmet>
+        <title>Facebook</title>
+      </Helmet>
       <Header findUser={findUser} />
       <Container fluid className="home-main">
         <Row>
@@ -192,16 +201,9 @@ function HomePage() {
             </div>
           </Col>
           <Col lg={6} className="pb-3">
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
+            {posts?.map((e, i) => (
+              <Post key={e.id} postId={e.id} />
+            ))}
           </Col>
           <Col lg={3}>
             <div className="d-flex align-items-center home-group-icon gap-2 rounded px-2">
