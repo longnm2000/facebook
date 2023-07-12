@@ -40,7 +40,7 @@
       "year": "2016",
       "gender": "0",
       "confirmPassword": "Qwer1234!",
-      "avatar": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2Fdownload.jpeg?alt=media&token=f666ab92-0422-4570-94ac-aa2ff9ae1c4c",
+      "avatar": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2Fdownload.jpeg?alt=media&token=1733a469-c726-44a0-a209-02e784d7066e",
       "bgImage": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2FAnh-gai-xinh-Viet-Nam.jpg?alt=media&token=80d994f9-86da-4140-a167-86afddc7b08a",
       "friends": [],
       "id": 125
@@ -48,38 +48,70 @@
   ],
   "posts": [
     {
-      "id": 1,
-      "userId": 125,
-      "rule": 2,
-      "content": "dawdwadawdawdwa",
-      "image": "https://antimatter.vn/wp-content/uploads/2022/10/hinh-anh-gai-xinh-de-thuong.jpg",
-      "like": [
-        124,
-        125
-      ],
-      "comments": []
-    },
-    {
       "id": 3,
       "userId": 124,
       "rule": 2,
       "content": "manh",
       "image": "https://antimatter.vn/wp-content/uploads/2022/10/hinh-anh-gai-xinh-de-thuong.jpg",
       "like": [
-        123,
         124,
+        125,
+        123
+      ]
+    },
+    {
+      "userId": 125,
+      "rule": 2,
+      "content": "Mình là con gà",
+      "image": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2Fhinh-anh-gai-xinh-trung-quoc.jpg?alt=media&token=1410aeb4-1d80-4133-aad0-21896cf3e48d",
+      "like": [],
+      "id": 4
+    },
+    {
+      "userId": 125,
+      "rule": 2,
+      "content": "mot ngay tot lang",
+      "image": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2Flike-icon.jpg?alt=media&token=0580fc95-62e3-459c-919d-26061d6da512",
+      "like": [],
+      "id": 5
+    },
+    {
+      "userId": 125,
+      "rule": 2,
+      "content": "Hoho",
+      "image": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2FAnh-gai-xinh-Viet-Nam.jpg?alt=media&token=f85eb40c-1691-4846-a659-39d29d3c4941",
+      "like": [
         125
       ],
-      "comments": [
-        {
-          "userId": 125,
-          "comment": "dwadwdwadaw"
-        },
-        {
-          "userId": 125,
-          "comment": "dwadwadawdwadw"
-        }
-      ]
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 2,
+      "postId": 3,
+      "userId": 125,
+      "comment": "dwadwdwadaw"
+    },
+    {
+      "objComment": {
+        "postId": 3,
+        "userId": 125,
+        "comment": "i love you"
+      },
+      "id": 5
+    },
+    {
+      "postId": 3,
+      "userId": 123,
+      "comment": "hello moi nguoi",
+      "id": 7
+    },
+    {
+      "postId": 6,
+      "userId": 125,
+      "comment": "gà",
+      "id": 8
     }
   ]
 }

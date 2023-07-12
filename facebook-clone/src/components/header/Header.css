@@ -44,11 +44,7 @@
     border-bottom: blue solid 4px;
 }
 
-@media (max-width: 950px) {
-    .header-btn-center {
-        display: none;
-    }
-}
+
 
 .custom-toggle::after {
     display: none !important;
@@ -61,4 +57,11 @@
 
 .header-route-navlink:hover {
     background-color: rgb(197, 194, 194);
+}
+
+@media (max-width: 900px) {
+    .hide-col {
+        display: none !important;
+        background-color: red;
+    }
 }

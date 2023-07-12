@@ -3,25 +3,29 @@ import "./Post.css";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import Dropdown from "react-bootstrap/Dropdown";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 export default function Post(props) {
-  const navigate = useNavigate();
   const decodedToken = jwt_decode(localStorage.getItem("currentUser"));
   const [isDelete, setIsDelete] = useState(false);
   const [users, setUsers] = useState(null);
   const [posts, setPosts] = useState(null);
+  const [commentsList, setCommentsList] = useState(null);
   const fetchData = async () => {
     try {
-      const [responseUser, responsePosts] = await Promise.all([
-        axios.get(`http://localhost:8000/users/`),
-        axios.get(`http://localhost:8000/posts/`),
-      ]);
+      const [responseUser, responsePosts, responseComments] = await Promise.all(
+        [
+          axios.get(`http://localhost:8000/users/`),
+          axios.get(`http://localhost:8000/posts/`),
+          axios.get(`http://localhost:8000/comments/`),
+        ]
+      );
       setUsers(responseUser.data);
       setPosts(responsePosts.data);
+      setCommentsList(responseComments.data);
     } catch (error) {
       console.log(error);
     }
@@ -67,48 +71,91 @@ export default function Post(props) {
     }
   };
 
-  const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose1 = () => setShow1(false);
+  const handleShow1 = () => setShow1(true);
+  const [show2, setShow2] = useState(false);
+
+  const handleClose2 = () => setShow2(false);
+
+  // const [editCommentUserId, setEditCommentUserId] = useState(null);
+  // const [editCommentId, setEditCommentId] = useState(null);
+  // const [editComment, setEditComment] = useState(null);
+
+  // if (editCommentId) {
+  //   const findEditComment = commentsList.find((e) => e.id === editCommentId);
+  //   console.log(findEditComment);
+  //   setEditComment(findEditComment?.comment);
+  //   console.log(editComment);
+  // }
+
+  const handleShow2 = (user, id) => {
+    // setEditCommentUserId(user);
+    // setEditCommentId(id);
+    setShow2(true);
+  };
+  // console.log(editCommentUserId, editCommentId, editComment);
 
   const [newComment, setNewComment] = useState("");
 
   const handleAddNewComment = async () => {
-    let objComment = { userId: +decodedToken.sub, comment: newComment };
+    let objComment = {
+      postId: props.postId,
+      userId: +decodedToken.sub,
+      comment: newComment,
+    };
     console.log(objComment);
-    findPost?.comments.unshift(objComment);
-    console.log(findPost);
+    setCommentsList([...commentsList, objComment]);
+    console.log(commentsList);
+
     await axios
-      .patch(`http://localhost:8000/posts/${findPost.id}`, {
-        comments: findPost.comments,
+      .post(`http://localhost:8000/comments/`, {
+        postId: props.postId,
+        userId: +decodedToken.sub,
+        comment: newComment,
       })
       .then((response) => {
         console.log(response.data);
         setNewComment("");
-        handleClose();
+        handleClose1();
         fetchData();
       })
       .catch((error) => {
         console.error(error);
       });
   };
+
+  const postComments = commentsList?.filter((e) => e.postId === props.postId);
+
+  const handleDeleteComment = async (user, id) => {
+    if (user === +decodedToken.sub) {
+      await axios.delete(`http://localhost:8000/comments/${id}`);
+      fetchData();
+    }
+  };
+
+  const handleEditComment = async () => {
+    // if (editCommentUserId === +decodedToken.sub) {
+    //   console.log();
+    // }
+  };
+
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show1} onHide={handleClose1}>
         <Modal.Header closeButton>
           <Modal.Title>Viết bình luận</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Control
-            as="textarea"
-            rows={3}
+            type="text"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose1}>
             Close
           </Button>
           <Button variant="primary" onClick={handleAddNewComment}>
@@ -116,15 +163,16 @@ export default function Post(props) {
           </Button>
         </Modal.Footer>
       </Modal>
+
       {!isDelete ? (
         <div className="bg-white p-3 mt-3  rounded ">
           <div className="d-flex align-items-center justify-content-between ">
             <div className="d-flex align-items-center gap-2">
               <div className="post-icon-box-2">
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMJ6-GDx2BZEukcar1X9eCqbSjD0EJaV4e4g&usqp=CAU"
+                  src={findUser?.avatar}
                   alt=""
-                  className="rounded-5"
+                  className="rounded-5 object-fit-cover"
                 />
               </div>
               <div>
@@ -174,7 +222,7 @@ export default function Post(props) {
               <span>{findPost?.like.length}</span>
             </div>
             <div>
-              <span>{findPost?.comments.length} </span>
+              <span>{postComments?.length} </span>
               <i className="fa-regular fa-message"></i>
             </div>
           </div>
@@ -197,12 +245,84 @@ export default function Post(props) {
                 </span>
               )}
             </button>
-            <button className="btn btn-light flex-grow-1" onClick={handleShow}>
+            <button className="btn btn-light flex-grow-1" onClick={handleShow1}>
               <i className="fa-regular fa-message"></i> Bình luận
             </button>
             <button className="btn btn-light flex-grow-1">
               <i className="fa-solid fa-share"></i> Chia sẻ
             </button>
+          </div>
+          <div className="mt-3">
+            {postComments?.map((e, i) => {
+              const findAuth = users.find((user) => user.id === e.userId);
+              return (
+                <div className="d-flex gap-2" key={i}>
+                  <div>
+                    <NavLink
+                      className={"post-route-navlink route-navlink"}
+                      to={`/profile/${findAuth.id}`}
+                    >
+                      <img
+                        src={findAuth?.avatar}
+                        alt=""
+                        width={"40px"}
+                        height={"40px"}
+                        className="rounded-circle"
+                      />
+                    </NavLink>
+                  </div>
+                  <div>
+                    <h5>
+                      <NavLink
+                        className={"post-route-navlink route-navlink"}
+                        to={`/profile/${findAuth.id}`}
+                      >
+                        {findAuth.lastName} {findAuth.firstName}
+                      </NavLink>
+                    </h5>
+                    <p>{e.comment}</p>
+                  </div>
+                  <Dropdown>
+                    <Dropdown.Toggle variant="white" id="dropdown-basic">
+                      <i className="fa-solid fa-ellipsis"></i>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item
+                        onClick={() => handleShow2(findAuth.id, e.id)}
+                      >
+                        Sửa comment
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        onClick={() => handleDeleteComment(findAuth.id, e.id)}
+                      >
+                        Xóa comment
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  <Modal show={show2} onHide={handleClose2}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Sửa bình luận</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <Form.Control
+                        type="text"
+                        defaultValue={e.comment}
+                        onChange={(e) => setNewComment(e.target.value)}
+                      />
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose2}>
+                        Close
+                      </Button>
+                      <Button variant="primary" onClick={handleEditComment}>
+                        Gửi bình luận
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
+              );
+            })}
           </div>
         </div>
       ) : (

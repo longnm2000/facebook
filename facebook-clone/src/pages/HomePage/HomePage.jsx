@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import NewPost from "../../components/NewPost/NewPost";
 
 function HomePage() {
   const decodedToken = jwt_decode(localStorage.getItem("currentUser"));
@@ -44,7 +45,7 @@ function HomePage() {
       <Header findUser={findUser} />
       <Container fluid className="home-main">
         <Row>
-          <Col lg={3} className="h-100">
+          <Col xl={3} className="h-100">
             <div className=" home-left-nav">
               <NavLink
                 to={!!findUser ? `/profile/${findUser.id}` : "/login-user"}
@@ -55,7 +56,7 @@ function HomePage() {
                     <img
                       src={!!findUser ? findUser.avatar : ""}
                       alt=""
-                      className="rounded-5"
+                      className="rounded-5 object-fit-cover"
                     />
                   </div>
                   <div>
@@ -200,12 +201,17 @@ function HomePage() {
               </div>
             </div>
           </Col>
-          <Col lg={6} className="pb-3">
+          <Col xl={6} className="pb-3">
+            {!!findUser ? (
+              <NewPost findUser={findUser} fetchData={fetchData} />
+            ) : (
+              <></>
+            )}
             {posts?.map((e, i) => (
               <Post key={e.id} postId={e.id} />
             ))}
           </Col>
-          <Col lg={3}>
+          <Col xl={3}>
             <div className="d-flex align-items-center home-group-icon gap-2 rounded px-2">
               <div className="home-icon-box d-flex justify-content-center align-items-center">
                 <img

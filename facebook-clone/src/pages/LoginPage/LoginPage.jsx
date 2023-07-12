@@ -31,32 +31,32 @@ function LoginPage() {
     if (!email || !password) {
       toast.error("Vui lòng nhập đầy đủ thông tin");
       return;
+    } else {
+      axios
+        .post("http://localhost:8000/login", {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            localStorage.setItem(
+              "currentUser",
+              JSON.stringify(res.data.accessToken)
+            );
+
+            toast.success("Đăng nhập thành công");
+            navigate("/");
+          }
+        })
+
+        .catch((err) => {
+          if (err.response && err.response.status === 404) {
+            toast.error("Đăng nhập thất bại");
+          } else {
+            toast.error("Đã xảy ra lỗi");
+          }
+        });
     }
-
-    axios
-      .post("http://localhost:8000/login", {
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          localStorage.setItem(
-            "currentUser",
-            JSON.stringify(res.data.accessToken)
-          );
-
-          toast.success("Đăng nhập thành công");
-          navigate("/");
-        }
-      })
-
-      .catch((err) => {
-        if (err.response && err.response.status === 404) {
-          toast.error("Đăng nhập thất bại");
-        } else {
-          toast.error("Đã xảy ra lỗi");
-        }
-      });
   };
 
   return (
@@ -99,7 +99,7 @@ function LoginPage() {
                 <Button variant="primary" type="submit" className="w-100 py-2">
                   Đăng nhập
                 </Button>
-                <a href="www.google.com">Quên mật khẩu</a>
+
                 <hr />
                 <div className="d-flex justify-content-center">
                   <Button

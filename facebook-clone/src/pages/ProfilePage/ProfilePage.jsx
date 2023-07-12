@@ -11,6 +11,7 @@ import Modal from "react-bootstrap/Modal";
 import { storage } from "../../firebase";
 import Form from "react-bootstrap/Form";
 import { Helmet } from "react-helmet";
+import NewPost from "../../components/NewPost/NewPost";
 
 export default function ProfilePage() {
   const { id } = useParams();
@@ -196,11 +197,13 @@ export default function ProfilePage() {
                 </div>
                 <div className="p-3 shadow-sm border rounded bg-white">
                   <h3>Bạn bè</h3>
-                  <p>50 bạn</p>
+                  <p>{user?.friends.length} bạn</p>
                 </div>
               </div>
             </Col>
             <Col sm={7}>
+              {user ? <NewPost findUser={user} fetchData={fetchData} /> : <></>}
+
               <h2 className="mt-3 bg-white p-3 rounded">Bài viết</h2>
               {/* {posts?.length === 0 ? (
                 posts.map((e) => {

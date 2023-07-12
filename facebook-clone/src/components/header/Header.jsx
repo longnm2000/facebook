@@ -50,13 +50,13 @@ function Header() {
             </div>
             <i className="fa-solid fa-magnifying-glass me-2 rounded-5 bg-input-group"></i>
           </Col>
-          <Col className="d-flex justify-content-center collapse">
+          <Col className="d-flex  hide-col">
             <div className="d-flex h-100 header-btn-center">
-              <div className="header-group-route d-flex align-items-center justify-content-center">
+              <div className=" d-flex align-items-center">
                 <NavLink
                   to={"/"}
                   className={
-                    "w-100 h-100 d-flex justify-content-center align-items-center header-navlink"
+                    "w-100 h-100 d-flex  align-items-center header-navlink"
                   }
                 >
                   <svg
@@ -170,7 +170,11 @@ function Header() {
                     variant="white"
                     className="bg-white custom-toggle p-0 header-group-btn d-flex justify-content-center align-items-center rounded-5"
                   >
-                    <img src={findUser?.avatar} alt="" />
+                    <img
+                      src={findUser?.avatar}
+                      alt=""
+                      className="object-fit-cover"
+                    />
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className="d-flex flex-column">
