@@ -4,6 +4,9 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import { Helmet } from "react-helmet";
+import AdminLoginPage from "./pages/Auth/AuthLoginPage/AdminLoginPage";
+import AdminHomePage from "./pages/Auth/AuthHomePage/AdminHomePage";
+import AuthPostPage from "./pages/Auth/AuthPostPage/AuthPostPage";
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
         ></Route>
         <Route path="/login-user" element={<LoginPage />}></Route>
         <Route path="/profile/:id" element={<ProfilePage />}></Route>
+        <Route path="/admin/users" element={<AdminHomePage />}></Route>
+        <Route path="/admin/login-admin" element={<AdminLoginPage />}></Route>
+        <Route path="/admin/posts" element={<AuthPostPage />}></Route>
       </Routes>
     </div>
   );

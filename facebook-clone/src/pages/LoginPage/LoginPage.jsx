@@ -27,7 +27,6 @@ function LoginPage() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Validate input
     if (!email || !password) {
       toast.error("Vui lòng nhập đầy đủ thông tin");
       return;

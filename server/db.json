@@ -53,11 +53,7 @@
       "rule": 2,
       "content": "manh",
       "image": "https://antimatter.vn/wp-content/uploads/2022/10/hinh-anh-gai-xinh-de-thuong.jpg",
-      "like": [
-        124,
-        125,
-        123
-      ]
+      "like": [124, 125, 123]
     },
     {
       "userId": 125,
@@ -80,9 +76,7 @@
       "rule": 2,
       "content": "Hoho",
       "image": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2FAnh-gai-xinh-Viet-Nam.jpg?alt=media&token=f85eb40c-1691-4846-a659-39d29d3c4941",
-      "like": [
-        125
-      ],
+      "like": [125],
       "id": 6
     }
   ],
@@ -113,5 +107,6 @@
       "comment": "gà",
       "id": 8
     }
-  ]
+  ],
+  "admin": { "email": "long123@gmail.com", "password": "1234" }
 }
