@@ -94,19 +94,23 @@ function NewPost({ findUser, fetchData }) {
           height={"40px"}
           className="rounded-circle object-fit-cover"
         />
-        <Button variant="secondary" className="w-100" onClick={handleShow}>
+        <Button
+          variant="secondary"
+          className="w-100 rounded-5"
+          onClick={handleShow}
+        >
           Bạn đang nghĩ gì
         </Button>
       </div>
       <div className="d-flex justify-content-between mt-3">
         <Button variant="secondary" className="">
-          <i class="fa-solid fa-image"></i> Ảnh
+          <i className="fa-solid fa-image"></i> Ảnh
         </Button>
         <Button variant="secondary" className="">
-          <i class="fa-solid fa-video"></i> Video
+          <i className="fa-solid fa-video"></i> Video
         </Button>
         <Button variant="secondary" className="">
-          <i class="fa-regular fa-face-smile"></i> Cảm xúc
+          <i className="fa-regular fa-face-smile"></i> Cảm xúc
         </Button>
       </div>
     </div>

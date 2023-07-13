@@ -10,9 +10,10 @@
       "month": "2",
       "year": "2021",
       "gender": "0",
-      "avatar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
-      "bgImage": "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
+      "avatar": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2Fhinh-anh-gai-xinh-han-quoc-2.jpg?alt=media&token=ba389ecb-607d-48ab-b92e-11755855b678",
+      "bgImage": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2Fimages%20(2).jpeg?alt=media&token=81022ae9-dbbf-4029-8f6e-a18c2d6ba63c",
       "friends": [],
+      "isLogin": true,
       "id": 123
     },
     {
@@ -28,6 +29,7 @@
       "avatar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
       "bgImage": "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
       "friends": [],
+      "isLogin": true,
       "id": 124
     },
     {
@@ -43,7 +45,90 @@
       "avatar": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2Fdownload.jpeg?alt=media&token=1733a469-c726-44a0-a209-02e784d7066e",
       "bgImage": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2FAnh-gai-xinh-Viet-Nam.jpg?alt=media&token=80d994f9-86da-4140-a167-86afddc7b08a",
       "friends": [],
+      "isLogin": true,
       "id": 125
+    },
+    {
+      "email": "trinhquyen@gmail.com",
+      "password": "$2a$10$wccFEvbBnMTxZo0kLput/ePG8PTqrsL5PMw9VtnrZvN/ARUHiXvh2",
+      "firstName": "Quyên",
+      "lastName": "Trịnh",
+      "date": "1",
+      "month": "1",
+      "year": "2015",
+      "gender": "1",
+      "confirmPassword": "Qwer1234!",
+      "avartar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
+      "bgImage": "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
+      "friends": [],
+      "id": 126,
+      "isLogin": true
+    },
+    {
+      "email": "khanghi@gmail.com",
+      "password": "$2a$10$ctXlMO67ATaTB4cmd.GIOOyJ5lg9NF52tN7.drSfHKjNrBAYblXUO",
+      "firstName": "Hi",
+      "lastName": "Khang",
+      "date": "17",
+      "month": "4",
+      "year": "2008",
+      "gender": "0",
+      "confirmPassword": "Qwer1234!",
+      "avartar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
+      "bgImage": "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
+      "friends": [],
+      "isLogin": true,
+      "id": 127,
+      "avatar": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2FScreenshot%20from%202023-07-13%2006-46-47.png?alt=media&token=3d1ff459-38dd-4c56-8e6a-409362e99db9"
+    },
+    {
+      "email": "leroi@gmail.com",
+      "password": "$2a$10$lsqnDtHVDUc28sBXjE/QAOP4R8DM7vtoeSyEjY2WPWiiaR27wWnAi",
+      "firstName": "Rơi",
+      "lastName": "Lệ",
+      "date": "12",
+      "month": "5",
+      "year": "2012",
+      "gender": "0",
+      "confirmPassword": "Qwer1234!",
+      "avartar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
+      "bgImage": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2F1-1648.jpg?alt=media&token=d7d235b4-8bed-4d2f-9ec2-0a41ee4d92ce",
+      "friends": [],
+      "isLogin": true,
+      "id": 128,
+      "avatar": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2FScreenshot%20from%202023-07-13%2006-46-47.png?alt=media&token=17b9e484-52e7-4d21-a56e-20e947f1bd2e"
+    },
+    {
+      "email": "phanlong123@gmail.com",
+      "password": "$2a$10$sc9kbqPUgb8h9ndb0EvsGeXXaS5mef/NZPefn4BYo4kd7Ljabs5Zu",
+      "firstName": "Long",
+      "lastName": "Phan",
+      "date": "14",
+      "month": "2",
+      "year": "2007",
+      "gender": "1",
+      "confirmPassword": "Qwer1234!",
+      "avartar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
+      "bgImage": "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
+      "friends": [],
+      "isLogin": true,
+      "id": 129
+    },
+    {
+      "email": "longkk@gmail.com",
+      "password": "$2a$10$Db8YgRCCOdsw58WITGskpOfRs.Qtery0dD0uEkmE3A3Z.gT1Lh2uK",
+      "firstName": "Long",
+      "lastName": "Mạnh",
+      "date": "20",
+      "month": "5",
+      "year": "2000",
+      "gender": "0",
+      "confirmPassword": "Qwer1234!",
+      "avartar": "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
+      "bgImage": "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
+      "friends": [],
+      "isLogin": true,
+      "id": 130
     }
   ],
   "posts": [
@@ -53,31 +138,42 @@
       "rule": 2,
       "content": "manh",
       "image": "https://antimatter.vn/wp-content/uploads/2022/10/hinh-anh-gai-xinh-de-thuong.jpg",
-      "like": [124, 125, 123]
+      "like": [
+        124,
+        125,
+        123
+      ]
     },
     {
       "userId": 125,
       "rule": 2,
       "content": "Mình là con gà",
       "image": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2Fhinh-anh-gai-xinh-trung-quoc.jpg?alt=media&token=1410aeb4-1d80-4133-aad0-21896cf3e48d",
-      "like": [],
+      "like": [
+        123
+      ],
       "id": 4
-    },
-    {
-      "userId": 125,
-      "rule": 2,
-      "content": "mot ngay tot lang",
-      "image": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2Flike-icon.jpg?alt=media&token=0580fc95-62e3-459c-919d-26061d6da512",
-      "like": [],
-      "id": 5
     },
     {
       "userId": 125,
       "rule": 2,
       "content": "Hoho",
       "image": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2FAnh-gai-xinh-Viet-Nam.jpg?alt=media&token=f85eb40c-1691-4846-a659-39d29d3c4941",
-      "like": [125],
+      "like": [
+        125,
+        123
+      ],
       "id": 6
+    },
+    {
+      "userId": 123,
+      "rule": 2,
+      "content": "Mai là không có hoa quả rồi",
+      "image": "https://firebasestorage.googleapis.com/v0/b/longnm-d91c0.appspot.com/o/images%2Fimages%20(1).jpeg?alt=media&token=1698568e-0579-40fe-97a7-3b4736ccfc78",
+      "like": [
+        123
+      ],
+      "id": 8
     }
   ],
   "comments": [
@@ -104,9 +200,30 @@
     {
       "postId": 6,
       "userId": 125,
-      "comment": "gà",
+      "comment": "gàđă",
       "id": 8
+    },
+    {
+      "postId": 4,
+      "userId": 123,
+      "comment": "kaka2",
+      "id": 9
+    },
+    {
+      "postId": 8,
+      "userId": 123,
+      "comment": "dfwadwa",
+      "id": 11
+    },
+    {
+      "postId": 8,
+      "userId": 125,
+      "comment": "hoa quả ngon",
+      "id": 12
     }
   ],
-  "admin": { "email": "long123@gmail.com", "password": "1234" }
+  "admin": {
+    "email": "long123@gmail.com",
+    "password": "1234"
+  }
 }

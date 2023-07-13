@@ -14,6 +14,9 @@ export default function Post(props) {
   const [users, setUsers] = useState(null);
   const [posts, setPosts] = useState(null);
   const [commentsList, setCommentsList] = useState(null);
+  const [editCommentId, setEditCommentId] = useState(null);
+  const [editComment, setEditComment] = useState("");
+
   const fetchData = async () => {
     try {
       const [responseUser, responsePosts, responseComments] = await Promise.all(
@@ -72,30 +75,8 @@ export default function Post(props) {
   };
 
   const [show1, setShow1] = useState(false);
-
   const handleClose1 = () => setShow1(false);
   const handleShow1 = () => setShow1(true);
-  const [show2, setShow2] = useState(false);
-
-  const handleClose2 = () => setShow2(false);
-
-  // const [editCommentUserId, setEditCommentUserId] = useState(null);
-  // const [editCommentId, setEditCommentId] = useState(null);
-  // const [editComment, setEditComment] = useState(null);
-
-  // if (editCommentId) {
-  //   const findEditComment = commentsList.find((e) => e.id === editCommentId);
-  //   console.log(findEditComment);
-  //   setEditComment(findEditComment?.comment);
-  //   console.log(editComment);
-  // }
-
-  const handleShow2 = (user, id) => {
-    // setEditCommentUserId(user);
-    // setEditCommentId(id);
-    setShow2(true);
-  };
-  // console.log(editCommentUserId, editCommentId, editComment);
 
   const [newComment, setNewComment] = useState("");
 
@@ -136,9 +117,38 @@ export default function Post(props) {
   };
 
   const handleEditComment = async () => {
-    // if (editCommentUserId === +decodedToken.sub) {
-    //   console.log();
-    // }
+    if (editCommentId && editComment) {
+      await axios
+        .patch(`http://localhost:8000/comments/${editCommentId}`, {
+          comment: editComment,
+        })
+        .then((response) => {
+          console.log(response.data);
+          fetchData();
+          handleClose2();
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  };
+  const [editMode, setEditMode] = useState(false);
+
+  const handleShow2 = (updateComment) => {
+    if (updateComment.userId === +decodedToken.sub) {
+      setEditCommentId(updateComment.id);
+      const comment = commentsList.find(
+        (comment) => comment.id === updateComment.id
+      );
+      setEditComment(comment?.comment);
+      setEditMode(true);
+    }
+  };
+
+  const handleClose2 = () => {
+    setEditMode(false);
+    setEditCommentId(null);
+    setEditComment("");
   };
 
   return (
@@ -288,9 +298,7 @@ export default function Post(props) {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item
-                        onClick={() => handleShow2(findAuth.id, e.id)}
-                      >
+                      <Dropdown.Item onClick={() => handleShow2(e)}>
                         Sửa comment
                       </Dropdown.Item>
                       <Dropdown.Item
@@ -300,15 +308,15 @@ export default function Post(props) {
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-                  <Modal show={show2} onHide={handleClose2}>
+                  <Modal show={editMode} onHide={handleClose2}>
                     <Modal.Header closeButton>
                       <Modal.Title>Sửa bình luận</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                       <Form.Control
                         type="text"
-                        defaultValue={e.comment}
-                        onChange={(e) => setNewComment(e.target.value)}
+                        value={editComment}
+                        onChange={(e) => setEditComment(e.target.value)}
                       />
                     </Modal.Body>
                     <Modal.Footer>

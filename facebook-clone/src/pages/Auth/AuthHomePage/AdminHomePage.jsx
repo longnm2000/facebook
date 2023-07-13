@@ -1,4 +1,3 @@
-import * as React from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";
@@ -23,10 +22,21 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import Deposits from "../../../components/Deposits/Deposits";
 import Orders from "../../../components/Orders/Orders";
 import { useNavigate } from "react-router-dom";
-
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Title from "../../../components/Title/Title";
+import { Helmet } from "react-helmet";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+// import { DataGrid } from "@mui/x-data-grid";
+import TablePagination from "@mui/material/TablePagination";
 function Copyright(props) {
   return (
     <Typography
@@ -96,7 +106,7 @@ const defaultTheme = createTheme();
 
 export default function AdminHomePage() {
   const navigate = useNavigate();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -105,8 +115,103 @@ export default function AdminHomePage() {
     navigate("/admin/login-admin");
   };
 
+  const [users, setUsers] = useState(null);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8000/users/`);
+
+      setUsers(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleChangeStatus = async (user) => {
+    let changeValue = user.isLogin ? false : true;
+    await axios
+      .patch(`http://localhost:8000/users/${user.id}`, {
+        isLogin: changeValue,
+      })
+      .then(() => {
+        fetchData();
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [selectedUser, setSelectedUser] = useState(null);
+  const handlePostDetail = (user) => {
+    setSelectedUser(user);
+    handleShow();
+  };
+
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  // Pagination change event handlers
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <ThemeProvider theme={defaultTheme}>
+      <Helmet>
+        <title>Users</title>
+      </Helmet>
+      <>
+        <Modal show={show} onHide={handleClose} className="py-5">
+          <Modal.Header closeButton>
+            <Modal.Title>Detail</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {!!selectedUser ? (
+              <div>
+                <p>ID: {selectedUser.id}</p>
+                <p>
+                  Name: {selectedUser.lastName} {selectedUser.firstName}
+                </p>
+                <p>Email: {selectedUser.email}</p>
+                <p>
+                  Birthday: {selectedUser.date} - {selectedUser.month} -{" "}
+                  {selectedUser.year}
+                </p>
+                <p>
+                  Gender:{" "}
+                  {selectedUser.gender === 0
+                    ? "Male"
+                    : +selectedUser.gender === 1
+                    ? "Female"
+                    : "Other"}
+                </p>
+                <p>Avatar:</p>
+                <img src={selectedUser.avatar} alt="" className="w-100" />
+                <p>Background Image:</p>
+                <img src={selectedUser.bgImage} alt="" className="w-100" />
+              </div>
+            ) : (
+              <></>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
@@ -181,8 +286,75 @@ export default function AdminHomePage() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Orders />
+                <Paper
+                  sx={{ p: 2, display: "flex", flexDirection: "column" }}
+                  className="overflow-x-auto bg-white"
+                >
+                  <React.Fragment>
+                    <Title>Users</Title>
+                    <Table size="small">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>ID</TableCell>
+                          <TableCell>Full Name</TableCell>
+                          <TableCell>Email</TableCell>
+                          <TableCell>Birthday</TableCell>
+                          <TableCell>gender</TableCell>
+                          <TableCell>Status</TableCell>
+                          <TableCell>Action</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {users
+                          ?.slice(
+                            page * rowsPerPage,
+                            page * rowsPerPage + rowsPerPage
+                          )
+                          .map((e, i) => (
+                            <TableRow key={i}>
+                              <TableCell>{e.id}</TableCell>
+                              <TableCell>{`${e.lastName} ${e.firstName}`}</TableCell>
+                              <TableCell>{e.email}</TableCell>
+                              <TableCell>{`${e.date}-${e.month}-${e.year}`}</TableCell>
+                              <TableCell>
+                                {e.gender === 0
+                                  ? "Male"
+                                  : e.gender === 1
+                                  ? "Female"
+                                  : "Other"}
+                              </TableCell>
+                              <TableCell>
+                                {e.isLogin ? "Accept" : "Ignore"}
+                              </TableCell>
+                              <TableCell>
+                                <Button
+                                  variant="secondary"
+                                  onClick={() => handlePostDetail(e)}
+                                  className="me-2"
+                                >
+                                  Detail
+                                </Button>
+                                <Button
+                                  variant="primary"
+                                  onClick={() => handleChangeStatus(e)}
+                                >
+                                  {e.isLogin ? "Lock" : "Unlock"}
+                                </Button>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                      </TableBody>
+                    </Table>
+                    <TablePagination
+                      rowsPerPageOptions={[5, 10, 25]}
+                      component="div"
+                      count={users?.length || 0}
+                      rowsPerPage={rowsPerPage}
+                      page={page}
+                      onPageChange={handleChangePage}
+                      onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                  </React.Fragment>
                 </Paper>
               </Grid>
             </Grid>

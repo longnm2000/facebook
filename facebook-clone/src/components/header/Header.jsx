@@ -23,12 +23,13 @@ function Header() {
     fetchData();
   }, []);
 
-  const findUser = useMemo(() => {
-    if (data.length > 0) {
-      return data.find((e) => e.id === +decodedToken.sub);
-    }
-    return null;
-  }, [data, decodedToken]);
+  // const findUser = useMemo(() => {
+  //   if (data.length > 0) {
+  //     return data.find((e) => e.id === +decodedToken.sub);
+  //   }
+  //   return null;
+  // }, [data, decodedToken]);
+  const findUser = data.find((e) => e.id === +decodedToken.sub);
 
   const handleExit = () => {
     localStorage.removeItem("currentUser");
@@ -50,7 +51,7 @@ function Header() {
             </div>
             <i className="fa-solid fa-magnifying-glass me-2 rounded-5 bg-input-group"></i>
           </Col>
-          <Col className="d-flex  hide-col">
+          {/* <Col className="d-flex  hide-col">
             <div className="d-flex h-100 header-btn-center">
               <div className=" d-flex align-items-center">
                 <NavLink
@@ -137,7 +138,7 @@ function Header() {
                 </svg>
               </div>
             </div>
-          </Col>
+          </Col> */}
           <Col>
             <div className="d-flex justify-content-end gap-2 align-items-center h-100">
               <div className="header-group-btn d-flex justify-content-center align-items-center rounded-5">

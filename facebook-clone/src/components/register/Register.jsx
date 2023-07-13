@@ -24,15 +24,16 @@ export default function Register() {
     lastName: "",
     email: "",
     password: "",
-    date: "",
-    month: "",
-    year: "",
+    date: "1",
+    month: "1",
+    year: "2022",
     gender: "",
     confirmPassword: "",
     avartar: "https://cdn-icons-png.flaticon.com/512/2815/2815428.png",
     bgImage:
       "https://e0.pxfuel.com/wallpapers/91/989/desktop-wallpaper-background-for-facebook-cover-5-z.jpg",
     friends: [],
+    isLogin: true,
   });
 
   const { firstName, lastName, email, password, date, month, year } = register;
@@ -108,13 +109,13 @@ export default function Register() {
           name="email"
           placeholder="Email"
           className="bg-light"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
           required
           value={email}
           onChange={handleChangeRegister}
         />
         <Form.Control.Feedback type="invalid">
-          Không để trống
+          Email không hợp lệ
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
@@ -139,7 +140,7 @@ export default function Register() {
           aria-label="Default select example"
           name="date"
           required
-          value={date}
+          defaultValue={"1"}
           onChange={handleChangeRegister}
         >
           <option disabled>Ngày</option>
@@ -151,7 +152,7 @@ export default function Register() {
         </Form.Select>
         <Form.Select
           aria-label="Default select example"
-          value={month}
+          defaultValue={"1"}
           name="month"
           onChange={handleChangeRegister}
         >
@@ -165,7 +166,7 @@ export default function Register() {
         <Form.Select
           aria-label="Default select example"
           name="year"
-          value={year}
+          defaultValue={"2022"}
           onChange={handleChangeRegister}
         >
           <option disabled>Năm</option>

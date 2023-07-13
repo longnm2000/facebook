@@ -9,8 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useEffect } from "react";
-
+import { Helmet } from "react-helmet";
 import { useState } from "react";
 import Register from "../../components/register/Register";
 
@@ -38,16 +37,18 @@ function LoginPage() {
         })
         .then((res) => {
           if (res.status === 200) {
-            localStorage.setItem(
-              "currentUser",
-              JSON.stringify(res.data.accessToken)
-            );
-
-            toast.success("Đăng nhập thành công");
-            navigate("/");
+            const user = res.data.user;
+            if (user.isLogin) {
+              localStorage.setItem(
+                "currentUser",
+                JSON.stringify(res.data.accessToken)
+              );
+              navigate("/");
+            } else {
+              toast.error("Tài khoản bị khóa");
+            }
           }
         })
-
         .catch((err) => {
           if (err.response && err.response.status === 404) {
             toast.error("Đăng nhập thất bại");
@@ -60,6 +61,9 @@ function LoginPage() {
 
   return (
     <div>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="main-box">
         <Container className="py-4">
           <Row className="align-items-center" style={{ minHeight: "500px" }}>

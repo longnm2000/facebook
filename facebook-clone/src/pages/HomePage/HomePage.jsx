@@ -54,7 +54,7 @@ function HomePage() {
                 <div className="d-flex align-items-center home-group-icon gap-2 rounded px-2">
                   <div className="home-icon-box d-flex justify-content-center align-items-center">
                     <img
-                      src={!!findUser ? findUser.avatar : ""}
+                      src={!!findUser ? findUser?.avatar : ""}
                       alt=""
                       className="rounded-5 object-fit-cover"
                     />

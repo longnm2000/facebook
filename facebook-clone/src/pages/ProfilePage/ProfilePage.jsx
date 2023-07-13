@@ -92,7 +92,7 @@ export default function ProfilePage() {
       <div>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Select Image</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form.Control type="file" onChange={handleImageChange} />
@@ -182,6 +182,15 @@ export default function ProfilePage() {
                     Ngày sinh:{" "}
                     {`${user?.date} - ${user?.month} - ${user?.year}`}
                   </p>
+                  <p>
+                    Giới tính:{" "}
+                    {+user?.gender === 0
+                      ? "Nam"
+                      : +user?.gender === 1
+                      ? "Nữ"
+                      : "Giới tính khác"}
+                  </p>
+                  <p>Email: {user?.email}</p>
                   <button className="btn btn-secondary w-100">
                     Thêm tiểu sử
                   </button>

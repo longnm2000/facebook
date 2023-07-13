@@ -16,6 +16,7 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 function Copyright(props) {
   return (
@@ -67,7 +68,7 @@ export default function AdminLoginPage() {
       if (email === admin?.email && password === admin?.password) {
         localStorage.setItem("admin", JSON.stringify(admin));
         toast.success("Login Success!");
-        navigate("/admin");
+        navigate("/admin/users");
       } else {
         toast.error("Tài khoản hoặc mật khẩu không chính xác!");
       }
@@ -76,6 +77,9 @@ export default function AdminLoginPage() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <Helmet>
+        <title>Login Admin</title>
+      </Helmet>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
